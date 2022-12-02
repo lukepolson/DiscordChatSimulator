@@ -1,6 +1,5 @@
-import numpy as np
-import matplotlib.pyplot as plt
 from PIL import Image, ImageFont, ImageDraw 
+from pilmoji import Pilmoji
 import sys
 
 # CONSTANTS
@@ -51,5 +50,6 @@ def generate_chat(messages, name, time, profpic_file):
     template_editable.text(NAME_POSITION, name_text, NAME_FONT_COLOR, font=name_font)
     template_editable.text(time_position, time_text, TIME_FONT_COLOR, font=time_font)
     for i, message in enumerate(messages):
-        template_editable.text(MESSAGE_POSITIONS[i], message, MESSAGE_FONT_COLOR, font=message_font)
+        with Pilmoji(template) as pilmoji:
+            pilmoji.text(MESSAGE_POSITIONS[i], message.strip(), MESSAGE_FONT_COLOR, font=message_font)
     return template
