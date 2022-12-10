@@ -14,7 +14,7 @@ what kind?
 
 # this line is ignore becaused it has a # sign
 Jim:
-Chocolate
+plain
 ```
 
 and produces a sequence of discord messages, like those found in Beluga or Mr. P Solver videos. Messages from the same person stack: for example, in the chat above, the sequence of messages produced by the first chats of Jim are "Hey Bob" then "Hey Bob (newline) What kind of chocolate..." and then "Hey Bob (newline) What kind of chocolate... (newline) Do you find in airports?"
