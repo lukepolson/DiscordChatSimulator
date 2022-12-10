@@ -1,6 +1,10 @@
 from PIL import Image, ImageFont, ImageDraw 
 from pilmoji import Pilmoji
 import sys
+import datetime
+import os
+from tkinter import Tk, filedialog
+import json
 
 # CONSTANTS
 WORLD_WIDTH = 1777
@@ -27,10 +31,14 @@ MESSAGE_Y_INIT = 130
 MESSAGE_DY = 80
 MESSAGE_POSITIONS = [(MESSAGE_X, MESSAGE_Y_INIT+i*MESSAGE_DY) for i in range(5)]
 
-
+# Text fonts
 name_font = ImageFont.truetype('fonts/whitneymedium.otf', NAME_FONT_SIZE)
 time_font = ImageFont.truetype('fonts/whitneymedium.otf', TIME_FONT_SIZE)
 message_font = ImageFont.truetype('fonts/whitneybook.otf', MESSAGE_FONT_SIZE)
+
+# Profile picture dictionary
+with open('profile_pictures/profile_pic_dict.json') as file:
+  profile_pic_dict = json.loads(file.read())
 
 def generate_chat(messages, name, time, profpic_file):
     name_text = name
@@ -53,3 +61,49 @@ def generate_chat(messages, name, time, profpic_file):
         with Pilmoji(template) as pilmoji:
             pilmoji.text(MESSAGE_POSITIONS[i], message.strip(), MESSAGE_FONT_COLOR, font=message_font)
     return template
+
+def get_filename():
+    root = Tk()
+    root.withdraw()
+    root.attributes('-topmost', True)
+    return filedialog.askopenfilename()
+
+def save_images(lines, init_time, dt=30):
+    os.system(f'mkdir chat')
+    name_up_next = True # first line starts with name
+    current_time = init_time
+    current_name = None
+    current_lines = []
+    msg_number = 1
+    for line in lines:
+        # If line is empty (signifying end of message chain)
+        if line=='':
+            name_up_next=True
+            current_lines = []
+            continue
+        # lines that are commented out
+        if line[0]=='#':
+            continue
+        # If currently on a name line
+        if name_up_next:
+            current_name = line.split(':')[0]
+            name_up_next = False
+            continue
+        # otherwise append message
+        current_lines.append(line)
+        image = generate_chat(messages = current_lines,
+                              name = current_name,
+                              time = f'{current_time.hour % 12}:{current_time.minute}',
+                              profpic_file = f'profile_pictures/{profile_pic_dict[current_name]}')
+        image.save(f'chat\\{msg_number:03d}{current_name[0]}.png')
+        # update time and msg_number for saving
+        current_time+=datetime.timedelta(0,dt)
+        msg_number+=1
+
+
+if __name__=='__main__':
+    filename = get_filename()
+    with open(filename, encoding="utf8") as f:
+        lines = f.read().splitlines()
+    current_time = datetime.datetime.now()
+    save_images(lines, init_time=current_time)

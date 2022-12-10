@@ -1,0 +1,2 @@
+Pillow==9.3.0
+pilmoji==2.0.2
