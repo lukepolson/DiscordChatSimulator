@@ -21,7 +21,7 @@ and produces a sequence of discord messages, like those found in Beluga or Mr. P
 
 To run
 
-1. `pip install requirements.txt`
+1. `pip install -r requirements.txt`
 2. Add all desired profile pictures to the `profile_pictures/` folder.
 3. Inside the `profile_pictures/` folder, update the `profile_pic_dict.json` with names (corresponding to the names in whatever script txt file you want to convert) and corresponding profile pictures.
 4. Inside the repository folder, run `python generate_chat.py`. It will prompt you to choose a `.txt` file of a script (format outlines above) somewhere on your computer. The images will be saved in a newly created `chat/` folder with the form `007T.png` where the first 3 numbers represent the image number in the entire sequence and the letter is the first letter of speakers name. 
