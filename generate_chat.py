@@ -5,6 +5,10 @@ import datetime
 import os
 from tkinter import Tk, filedialog
 import json
+import warnings
+
+#Removes warnings
+warnings.filterwarnings('ignore')
 
 # CONSTANTS
 WORLD_WIDTH = 1777
