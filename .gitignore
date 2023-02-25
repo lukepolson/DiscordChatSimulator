@@ -4,3 +4,5 @@
 *.png
 *.ipynb
 chat/
+*.pyc
+__pycache__
