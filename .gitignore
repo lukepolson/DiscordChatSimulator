@@ -1,6 +1,2 @@
-*.png
-*.PNG
-*.otf
-*.png
-*.ipynb
 chat/
+.DS_Store
