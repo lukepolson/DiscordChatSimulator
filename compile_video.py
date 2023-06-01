@@ -7,7 +7,6 @@ def gen_vid(filename):
     image_files = sorted([f for f in os.listdir(input_folder) if f.endswith('.png')])
 
     durations = []
-    sfx = []
     with open(filename, encoding="utf8") as f:
         name_up_next = True
         
@@ -22,23 +21,13 @@ def gen_vid(filename):
                 name_up_next = False
                 continue
             else:
-                if ('~~~' in line):
-                    sfx.append(line.split('~~~')[1])
-                    durations.append(line.split('$^')[1].split('~~~')[0])
-                else:
-                    sfx.append(None)
-                    durations.append(line.split('$^')[1])
+                durations.append(line.split('$^')[1])
                 
                 
     # Create a text file to store the image paths
     with open('image_paths.txt', 'w') as file:    
         count = 0
         for image_file in image_files:
-            if sfx[count] != None:
-                file.write(f"file 'audio/{sfx[count]}.mp3'\nfile '{input_folder}{image_file}'\noutpoint {durations[count]}\n")
-                
-                print(sfx[count])
-                
             file.write(f"file '{input_folder}{image_file}'\noutpoint {durations[count]}\n")
             count += 1
 
