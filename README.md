@@ -1,8 +1,24 @@
 # Discord Chat Simulator
 
-## Info
+## Example Images & Video
 
-*This README file will be updated with a demo video tomorrow :)*
+#### Video
+
+https://github.com/Binary-Bytes/tests/assets/88529771/e196affa-8893-481e-b1a3-7194e56a3e57
+
+#### Images
+
+![001](https://github.com/Binary-Bytes/tests/assets/88529771/9b30a692-9cbd-435b-8859-7de4b3848771)
+
+![002](https://github.com/Binary-Bytes/tests/assets/88529771/4c8a2cea-69ba-4ba1-8dd7-dc47a42ad3d6)
+
+![003](https://github.com/Binary-Bytes/tests/assets/88529771/f242fcfc-c9fa-4765-bb46-fde58334cdad)
+
+![004](https://github.com/Binary-Bytes/tests/assets/88529771/c9919cb3-75ba-4d19-a951-4db8ab4a6f3b)
+
+![005](https://github.com/Binary-Bytes/tests/assets/88529771/8799d48f-840a-4319-b1b1-59bcc275087e)
+
+## Info
 
 This repository contains code that simulates and produces a fake discord conversation between multiple people. It takes in a text file of the form :-
 
@@ -34,19 +50,14 @@ and produces a full video of the chat, like those found in Beluga or Mr. P Solv
 ***But you need to rename those images properly, (for example, if you are taking a picture of the 5th message, the file should be 005.png)***
 
 2. Lines starting with `#!` mean - You took a picture of message/anything from discord and the code should not generate image for that message.
-
 3. There should be `$^` followed by a number after every message (including which start with `#!`) to express the number of seconds each message should be shown in the video.
 
-##  Usage
+## Usage
 
 - **The only prerequisites are [Python](https://www.python.org) and [FFmpeg](https://ffmpeg.org), which should be installed in order to run this script.**
-
 - **First download the repository and follow the steps given below.**
 
 1. `pip install -r requirements.txt`
-
 2. Add all desired profile pictures to the `profile_pictures/` folder.
-
 3. Inside the `profile_pictures/` folder, update the `profile_pic_dict.json` with names (corresponding to the names in whatever script txt file you want to convert) and corresponding profile pictures. Also make sure to add their role colours in `role_colors.json` file.
-
 4. Inside the repository folder, run `python generate_chat.py`. It will prompt you to choose a `.txt` file of a script (format outlines above) somewhere on your computer. The images will be saved in a newly created `chat/` folder with the form `007.png` where the numbers represent the image number in the entire sequence.
