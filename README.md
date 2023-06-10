@@ -4,7 +4,7 @@
 
 #### Video
 
-https://github.com/Binary-Bytes/tests/assets/88529771/e196affa-8893-481e-b1a3-7194e56a3e57
+https://github.com/Binary-Bytes/DiscordChatSimulator/assets/88529771/e19ce1e1-45b5-42a8-b0cd-0b08944facf7
 
 #### Images
 
